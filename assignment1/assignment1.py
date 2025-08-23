@@ -49,6 +49,7 @@ print("You have input ", input3, "and this program will now show a list of the p
 
 
 output3Arr = [input3]
+print("here is the initial input3 array: ", output3Arr)
 
 
 isFullyPrimeFactored = False
@@ -74,13 +75,38 @@ while not isFullyPrimeFactored:
                 if output3Arr[i] % possiblePrimeDivisors[k] == 0:
                         #at this point we have found a prime divisor
                         #then we replace the non prime with one divisor and append the other divisor - maybe that is backwards order?
+                        # I ACCIDENTALLY DID SOMETHING REALLY SMART HERE
+                        # BY APPENDING THE PRIME DIVISOR, THE NON PRIME IS ALWAYS FIRST
+                        # THEREFORE, I DO NOT HAVE TO LOOP, JUST LOOK AT THE FIRST INDEX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         output3Arr.append(possiblePrimeDivisors[k] )
                         output3Arr[i] /= possiblePrimeDivisors[k] 
+                        output3Arr[i] = int(output3Arr[i] )
                         #then we continue to because we just messed with the length of the array
                         continue
 
 #at this point we have an array of all the prime factors
+# print(output3Arr)
+#convert that array to the specifed output type via a map
+output3Arr.sort()
 print(output3Arr)
-#convert that array to the specifed output type
+
+output3_dict = {}
+for i in range(len(output3Arr)):
+    if output3Arr[i] not in output3_dict:
+        output3_dict[output3Arr[i]] = 1
+    else: output3_dict[output3Arr[i]] += 1
+
+print(output3_dict)
+
+# now let's take that map that is nicely ordered and make his string
+output3_string = ""
+for entry in output3_dict:
+    output3_string += str(entry)
+    if output3_dict[entry] > 1:
+        output3_string += "^" + str(output3_dict[entry])
+    output3_string += "*"
+output3_string = output3_string[:-1]
+
+print(output3_string)
 
 
