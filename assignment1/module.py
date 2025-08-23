@@ -11,13 +11,9 @@ def is_prime(num: int) -> bool:
     return True
 
 
-def get_prime_list_spec_len_string(output_len: int):
+def get_prime_list_spec_len_string(output_len: int) -> str:
     prime_list = get_prime_list_spec_len(output_len)
-    output_string = ""
-    for i in range(len(prime_list)):
-        output_string += str(prime_list[i]) + ","
-    output_string = output_string[:-1]
-    return output_string
+    return convert_list_to_string(prime_list)
 
 
 def get_prime_list_spec_len(output_len: int) -> list[int]:
@@ -44,11 +40,14 @@ def get_prime_list_until(input: int) -> list[int]:
     return output
 
 
-# since this is mostly copy/paste, I need to take the same parts out and call them in their own function
 def get_prime_list_until_string(until: int) -> str:
     prime_list = get_prime_list_until(until)
+    return convert_list_to_string(prime_list)
+
+
+def convert_list_to_string(entry: list[int]) -> str:
     output_string = ""
-    for i in range(len(prime_list)):
-        output_string += str(prime_list[i]) + ","
+    for i in range(len(entry)):
+        output_string += str(entry[i]) + ","
     output_string = output_string[:-1]
     return output_string
