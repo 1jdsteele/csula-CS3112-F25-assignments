@@ -1,4 +1,4 @@
-from module import is_prime, get_prime_list_spec_len_string
+from module import is_prime, get_prime_list_spec_len_string, get_prime_list_until_string
 import math
 
 # the main
@@ -38,16 +38,8 @@ print(
     "\n",
 )
 
-output2 = []
+print(get_prime_list_until_string(input2))
 
-# look at all numbers until input1
-# start at 2 (we will never include 1 or 0)
-for i in range(2, input2 + 1):  # the +1 bc we want to include the input
-    if is_prime(i):
-        output2.append(i)
-
-
-print(output2, "\n")
 
 # ++++++++++ part 3 ++++++++++
 input3 = int(
