@@ -1,4 +1,9 @@
-from module import is_prime, get_prime_list_spec_len_string, get_prime_list_until_string
+from module import (
+    is_prime,
+    get_prime_list_spec_len_string,
+    get_prime_list_until_string,
+    get_prime_factors,
+)
 import math
 
 # the main
@@ -56,69 +61,4 @@ print(
     "\n",
 )
 
-
-output3Arr = [input3]
-print("here is the initial input3 array: ", output3Arr)
-
-
-isFullyPrimeFactored = False
-while not isFullyPrimeFactored:
-    nonPrimeTriggered = False
-    for i in range(len(output3Arr)):
-        if not is_prime(output3Arr[i]):
-            nonPrimeTriggered = True
-    if not nonPrimeTriggered:
-        isFullyPrimeFactored = True
-        continue
-    # otherwise there was a non prime and we must deal with it
-    for i in range(len(output3Arr)):
-        # loop through until we find a non prime
-        if not is_prime(output3Arr[i]):
-            # then we figure out what two numbers it is possible to be divisible by
-            # question: should I use a list of primes up to the square root to find divisors?
-            # yes - adapt from part 2! turn it into a function and then use that here
-            possiblePrimeDivisors = []
-            for j in range(
-                2, math.floor(math.sqrt(output3Arr[i])) + 1
-            ):  # the +1 bc we want to include the input
-                if is_prime(j):
-                    possiblePrimeDivisors.append(j)
-            # now I have filled a list of possible Prime Divisors. Now go through the list from the beginning until you find one that gives a mod == 0
-            for k in range(len(possiblePrimeDivisors)):
-                if output3Arr[i] % possiblePrimeDivisors[k] == 0:
-                    # at this point we have found a prime divisor
-                    # then we replace the non prime with one divisor and append the other divisor - maybe that is backwards order?
-                    # I ACCIDENTALLY DID SOMETHING REALLY SMART HERE
-                    # BY APPENDING THE PRIME DIVISOR, THE NON PRIME IS ALWAYS FIRST
-                    # THEREFORE, I DO NOT HAVE TO LOOP, JUST LOOK AT THE FIRST INDEX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    output3Arr.append(possiblePrimeDivisors[k])
-                    output3Arr[i] /= possiblePrimeDivisors[k]
-                    output3Arr[i] = int(output3Arr[i])
-                    # then we continue to because we just messed with the length of the array
-                    continue
-
-# at this point we have an array of all the prime factors
-# print(output3Arr)
-# convert that array to the specifed output type via a map
-output3Arr.sort()
-print(output3Arr)
-
-output3_dict = {}
-for i in range(len(output3Arr)):
-    if output3Arr[i] not in output3_dict:
-        output3_dict[output3Arr[i]] = 1
-    else:
-        output3_dict[output3Arr[i]] += 1
-
-print(output3_dict)
-
-# now let's take that map that is nicely ordered and make his string
-output3_string = ""
-for entry in output3_dict:
-    output3_string += str(entry)
-    if output3_dict[entry] > 1:
-        output3_string += "^" + str(output3_dict[entry])
-    output3_string += "*"
-output3_string = output3_string[:-1]
-
-print(output3_string)
+print(get_prime_factors(input3))
