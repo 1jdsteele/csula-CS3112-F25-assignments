@@ -1,7 +1,7 @@
 from module import (
     is_prime,
     get_prime_list_spec_len_string,
-    get_prime_list_until_string,
+    get_prime_list_including_string,
     get_prime_factors,
 )
 import math
@@ -43,7 +43,7 @@ print(
     "\n",
 )
 
-print(get_prime_list_until_string(input2))
+print(get_prime_list_including_string(input2))
 
 
 # ++++++++++ part 3 ++++++++++

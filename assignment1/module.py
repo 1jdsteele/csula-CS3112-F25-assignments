@@ -28,18 +28,16 @@ def get_prime_list_spec_len(output_len: int) -> list[int]:
     return prime_list
 
 
-def get_prime_list_until(input: int) -> list[int]:
+def get_prime_list_including(input: int) -> list[int]:
     output = []
-
     for i in range(2, input + 1):  # 2 bc first prime, 1 because include the input
         if is_prime(i):
             output.append(i)
-
     return output
 
 
-def get_prime_list_until_string(until: int) -> str:
-    prime_list = get_prime_list_until(until)
+def get_prime_list_including_string(including: int) -> str:
+    prime_list = get_prime_list_including(including)
     return convert_list_to_string(prime_list)
 
 
@@ -59,24 +57,37 @@ def get_prime_factors(entry: int) -> str:
     return output_string
 
 
+# def get_prime_factors_arr(entry: int) -> list[int]:
+#     output = [entry]
+#     if is_prime(output[0]) or entry < 2:
+#         return output
+
+#     possiblePrimeDivisors = []
+#     possiblePrimeDivisors = get_prime_list_including(entry)
+
+#     while not is_prime(output[0]):
+#         for k in range(len(possiblePrimeDivisors)):
+#             while output[0] % possiblePrimeDivisors[k] == 0:
+#                 output.append(possiblePrimeDivisors[k])
+#                 output[0] //= possiblePrimeDivisors[k]
+
+#     output.sort()
+#     return output
+
+
+# TO DO: refactor below so like above it keeps rolling through a single prime
 def get_prime_factors_arr(entry: int) -> list[int]:
     output = [entry]
     if is_prime(output[0]):
         return output
 
-    possiblePrimeDivisors = []
-
-    for i in range(2, math.floor(math.sqrt(output[0])) + 1):
-        if is_prime(i):
-            possiblePrimeDivisors.append(i)
+    possiblePrimeDivisors = get_prime_list_including(entry)
 
     while not is_prime(output[0]):
         for k in range(len(possiblePrimeDivisors)):
             if output[0] % possiblePrimeDivisors[k] == 0:
-
                 output.append(possiblePrimeDivisors[k])
-                output[0] /= possiblePrimeDivisors[k]
-                output[0] = int(output[0])
+                output[0] //= possiblePrimeDivisors[k]
                 continue
 
     output.sort()
