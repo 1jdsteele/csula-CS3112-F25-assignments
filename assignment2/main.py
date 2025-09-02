@@ -1,5 +1,5 @@
 import random
-from module import generate_rand_array, selection_sort, insertion_sort
+from module import print_case
 
 # introduction statement
 print(
@@ -12,20 +12,10 @@ while user_option:
 
     user_option = int(
         input(
-            "Input 1 to see selection sorting.\nInput 2 to see insertion sorting.\nInput 0 to quit the program.\n"
+            "Input 1 to see selection sorting.\nInput 2 to see insertion sorting.\nInput 3 to see selection sorting stepwise.\nInput 4 to see insertion sorting stepwise.\nInput 0 to quit the program.\n"
         )
     )
 
-    match user_option:
-        case 1:
-            rand_arr1 = generate_rand_array()
-            print("random array:", rand_arr1)
-            rand_arr1 = selection_sort(rand_arr1)
-            print("random array after selection sort:", rand_arr1, "\n")
-        case 2:
-            rand_arr2 = generate_rand_array()
-            print("array 2:", rand_arr2)
-            rand_arr2 = insertion_sort(rand_arr2)
-            print("array 2 after insertion sort:", rand_arr2, "\n")
+    print_case(user_option)
 
 print("Thank you for your time. Goodbye world")
