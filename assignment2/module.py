@@ -11,7 +11,7 @@ def generate_rand_array() -> list[int]:
 
 
 # notes: this is unstable - as in it reorders same value elements
-# to fix: romove the min and insert it at i, shifting all else
+# to fix: romove the min and insert it at i, shifting all else, like in insertion sort
 def selection_sort(arr: list[int]) -> list[int]:  # O(n^2)
     for i in range(len(arr)):
         curr_min = arr[i]
@@ -24,7 +24,7 @@ def selection_sort(arr: list[int]) -> list[int]:  # O(n^2)
     return arr
 
 
-def insertion_sort(arr: list[int]) -> list[int]:  # O(n^3)
+def insertion_sort(arr: list[int]) -> list[int]:
     for i in range(len(arr)):
         for j in range(i):
             if arr[i] < arr[j]:
