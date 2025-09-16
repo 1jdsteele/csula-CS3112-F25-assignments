@@ -1,4 +1,15 @@
-from module import take_exponenet
+from module import *
+
+# problem 1
+
+arr = create_rand_arr()
+print(arr)
+
+merge_sort(arr)
+print(arr)
+
+
+# problem 3
 
 print(take_exponenet(2, 2)) # 4
 print(take_exponenet(2, 3)) # 8
