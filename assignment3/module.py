@@ -70,12 +70,13 @@ def binary_search_helper(target: int, arr: list[int], start: int, end: int) -> i
         return midpoint
     #less than
     elif arr[midpoint] < target:
-        return binary_search_helper(target, arr, start, midpoint)
+        return binary_search_helper(target, arr, midpoint + 1, end)
     #more than
     elif arr[midpoint] > target:
-        return binary_search_helper(target, arr, midpoint + 1, end)
+        return binary_search_helper(target, arr, start, midpoint - 1)
     
     return -1
+        
 
 
 # problem 3 divide and conquer exponents

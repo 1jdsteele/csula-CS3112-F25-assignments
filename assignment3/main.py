@@ -8,6 +8,13 @@ print(arr)
 merge_sort(arr)
 print(arr)
 
+#problem 2
+
+print(binary_search(arr[1], arr)) # expect 1
+
+print(binary_search(-3, arr)) # expect -1
+
+
 
 # problem 3
 
