@@ -1,4 +1,30 @@
 import random
+#+++++++++++++ UI section ++++++++++++++++
+
+def print_case(user_choice: int):
+    if user_choice not in (1, 2):
+        return
+
+    match user_choice:
+        case 1:
+            arr = create_rand_arr()
+            print("Here is a randomly generated array: ", arr)
+            merge_sort(arr)
+            print("Here is a randomly generated array after merge sort: ", arr)
+            print("Now, please input a target to search for within the array. Returns of 0 and up reflect in which index the target was found; -1 denotes target was not found.")
+            user_target = int(input())
+            print(binary_search(user_target, arr))
+        case 2:
+            user_base = int(input("Now we will take an exponenet by divide and conquer. Please input a base: "))
+            user_exponent = int(input("Please input the exponent: "))
+            print(user_base, "^", user_exponent, " = ", take_exponenet(user_base, user_exponent))
+        # case 3:
+        #     arr = selection_sort_show_steps(arr)
+        #     print("random array after selection sort:", arr, "\n")
+        # case 4:
+        #     arr = insertion_sort_show_steps(arr)
+        #     print("random array after insertion sort:", arr, "\n")
+
 # ++++++++++++ #problem 1: merge sort ++++++++++++
 
 def create_rand_arr() -> list[int]:
