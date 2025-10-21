@@ -7,3 +7,6 @@ m = harmonic_sequence_total(chosen_n)
 print(m)
 
 # print(1/5)
+
+# generate_rand_ranked_arr(chosen_n)
+check_number_hires(chosen_n)
