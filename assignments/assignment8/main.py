@@ -9,4 +9,4 @@ print(m)
 # print(1/5)
 
 # generate_rand_ranked_arr(chosen_n)
-check_number_hires(chosen_n)
+check_number_hires_10k_avg(chosen_n)

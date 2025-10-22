@@ -19,13 +19,21 @@ def generate_rand_ranked_arr(num_ranks: int) -> list[int]:
     return arr
 
 
-def check_number_hires(applicant_num: int) -> int:
-    rand_ranked = generate_rand_ranked_arr(applicant_num)
+def check_number_hires(rand_ranked: list[int]) -> int:
     num_hires = 0
-    current_hire = applicant_num + 1
+    current_hire = len(rand_ranked) + 1
     for i in range(len(rand_ranked)):
         if rand_ranked[i] < current_hire:
             num_hires = num_hires + 1
             current_hire = rand_ranked[i]
     print(num_hires)
     return num_hires
+
+def check_number_hires_10k_avg(applicant_num: int) -> float:
+    total_num_hired = 0
+    for i in range(10001):
+        rand_ranked = generate_rand_ranked_arr(applicant_num)
+        total_num_hired = total_num_hired + check_number_hires(rand_ranked)
+    avg_num_hired = total_num_hired / 10000
+    print("average number hired: ", avg_num_hired)
+    return avg_num_hired
