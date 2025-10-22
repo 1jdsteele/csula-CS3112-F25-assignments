@@ -1,4 +1,5 @@
 import random
+import itertools
 
 def harmonic_sequence_total(n: int):
     sum = 0
@@ -15,7 +16,7 @@ def generate_rand_ranked_arr(num_ranks: int) -> list[int]:
     for i in range(num_ranks):
         rand_index = random.randint(i, num_ranks - 1)
         arr[i], arr[rand_index] = arr[rand_index], arr[i]
-    print(arr)
+    # print(arr)
     return arr
 
 
@@ -26,7 +27,7 @@ def check_number_hires(rand_ranked: list[int]) -> int:
         if rand_ranked[i] < current_hire:
             num_hires = num_hires + 1
             current_hire = rand_ranked[i]
-    print(num_hires)
+    # print(num_hires)
     return num_hires
 
 def check_number_hires_10k_avg(applicant_num: int) -> float:
@@ -35,5 +36,16 @@ def check_number_hires_10k_avg(applicant_num: int) -> float:
         rand_ranked = generate_rand_ranked_arr(applicant_num)
         total_num_hired = total_num_hired + check_number_hires(rand_ranked)
     avg_num_hired = total_num_hired / 10000
-    print("average number hired: ", avg_num_hired)
+    # print("average number hired: ", avg_num_hired)
     return avg_num_hired
+
+
+def find_avg_hired_all_permutations(applicant_num: int) -> float:
+    total_hires = 0
+    count = 0
+    for perm in itertools.permutations(range(1, applicant_num + 1)):
+        total_hires += check_number_hires(list(perm))
+        count += 1
+    avg = total_hires / count
+    print(avg)
+    return avg
